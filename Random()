@@ -9,6 +9,23 @@
 srand(time(0))
 
 printf("%d\n", rand() % 10) //prints a number in the range [0, 9]
-printf("%d\n", rand() % 10 + 1) //prints a number in the range [1, 10]
-printf("%d\n", rand() % 10 + 2); //prints a number in the range [2, 11]
+printf("%d\n", 1 + rand() % 10) //prints a number in the range [1, 10]
+printf("%d\n", 2 + rand() % 10); //prints a number in the range [2, 11]
+------//
+
+//-----
+//method which includes both the min and max values
+int generateRandom(int min, int max)
+{
+    //seeds only the first time function is called.
+    //if it seeds multiple times, the same number will be generated every time method is called.
+    static bool firstUse = true;
+    if (firstUse) 
+    {  
+      srand(time(0)); 
+      firstUse = false;
+    }
+    
+    return min + rand()%(max+1-min);
+}
 ------//
